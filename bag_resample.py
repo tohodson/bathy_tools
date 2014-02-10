@@ -30,8 +30,8 @@ for file in file_list:
     width = int( src.RasterXSize * res / out_res)
     height = int( src.RasterYSize * res / out_res)
     
-    dst_filename = 'resampled_' + os.path.splitext(file)[0] + '.nc'
-    dst = gdal.GetDriverByName('NetCDF').Create(dst_filename, width, height, 2, gdalconst.GDT_Float32)
+    dst_filename = 'resampled_' + os.path.splitext(file)[0] + '.tiff'
+    dst = gdal.GetDriverByName('GTiff').Create(dst_filename, width, height, 2, gdalconst.GDT_Float32)
     
     dst.SetProjection(src_proj)
     dst_trans = list(src_trans)
